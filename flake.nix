@@ -3,7 +3,7 @@
 
   inputs = {
     spicetify-themes = {
-      url = "github:morpheusthewhite/spicetify-themes";
+      url = "github:alindl/spicetify-themes";
       flake = false;
     };
   };
