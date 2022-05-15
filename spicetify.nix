@@ -3,16 +3,16 @@
 let
   spicetify-cli = buildGoModule rec {
     pname = "spicetify-cli";
-    version = "2.6.6";
+    version = "2.9.8";
 
     src = fetchFromGitHub {
       owner = "khanhas";
       repo = pname;
       rev = "v${version}";
-      sha256 = "sha256-+fEh0x0KltrDYKIbuHV2Vxq/FslE+Ki/0eJPaWUzRCE=";
+      sha256 = "sha256-juqQuoN8jcklgobp/dTI6OzbdpDWThn/xyYBAY5QtSU=";
     };
 
-    vendorSha256 = "sha256-g0RYIVIq4oMXdRZDBDnVYg7ombN5WEo/6O9hChQvOYs=";
+    vendorSha256 = "sha256-zYIbtcDM9iYSRHagvI9D284Y7w0ZxG4Ba1p4jqmQyng=";
 
     # used at runtime, but not installed by default
     postInstall = ''
@@ -42,9 +42,13 @@ let
     buildPhase = ''
       mkdir /tmp/spicetify-config
       export XDG_CONFIG_HOME=/tmp/spicetify-config
-      ${spicetify-cli}/bin/spicetify-cli config spotify_path "$(pwd)"/share/spotify
+      ${spicetify-cli}/bin/spicetify-cli config 2>&1 > /dev/null || true
+      CFG_PATH=$(${spicetify-cli}/bin/spicetify-cli -c)
+      sed -i "s:^spotify_path.*:spotify_path = $(pwd)/share/spotify:" $CFG_PATH
+
       touch /tmp/spicetify-config/prefs
-      ${spicetify-cli}/bin/spicetify-cli config prefs_path /tmp/spicetify-config/prefs
+      sed -i "s:^prefs_path.*:prefs_path = /tmp/spicetify-config/prefs:" $CFG_PATH
+
       ${spicetify-cli}/bin/spicetify-cli config current_theme Ziro
       ${spicetify-cli}/bin/spicetify-cli config color_scheme solarized-dark
       cat $(${spicetify-cli}/bin/spicetify-cli -c)

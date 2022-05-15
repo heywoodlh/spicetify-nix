@@ -6,6 +6,7 @@
       url = "github:alindl/spicetify-themes";
       flake = false;
     };
+    nixpkgs.url = "nixpkgs/21.11";
   };
 
   outputs = { self, nixpkgs, spicetify-themes }: let
