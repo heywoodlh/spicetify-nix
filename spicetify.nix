@@ -12,7 +12,7 @@ let
       sha256 = "sha256-juqQuoN8jcklgobp/dTI6OzbdpDWThn/xyYBAY5QtSU=";
     };
 
-    vendorSha256 = "sha256-zYIbtcDM9iYSRHagvI9D284Y7w0ZxG4Ba1p4jqmQyng=";
+    vendorSha256 = "sha256-5EGPqSiU/Ep3yUmAzNYYxwZKPmWjl/RUO5tLVpntu6s=";
 
     # used at runtime, but not installed by default
     postInstall = ''
