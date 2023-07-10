@@ -1,4 +1,4 @@
-{ pkgs, lib, buildGoModule, fetchFromGitHub, spotify-unwrapped, spicetify-themes }:
+{ pkgs, lib, buildGoModule, fetchFromGitHub, spotify-unwrapped, spicetify-themes, theme, colorscheme }:
 
 let
   spicetify-cli = buildGoModule rec {
@@ -49,10 +49,10 @@ let
       touch /tmp/spicetify-config/prefs
       sed -i "s:^prefs_path.*:prefs_path = /tmp/spicetify-config/prefs:" $CFG_PATH
 
-      ${spicetify-cli}/bin/spicetify-cli config current_theme Ziro
-      ${spicetify-cli}/bin/spicetify-cli config color_scheme solarized-dark
+      ${spicetify-cli}/bin/spicetify-cli config current_theme ${theme}
+      ${spicetify-cli}/bin/spicetify-cli config color_scheme ${colorscheme}
       cat $(${spicetify-cli}/bin/spicetify-cli -c)
-      cp -R ${spicetify-themes}/Ziro /tmp/spicetify-config/spicetify/Themes/
+      cp -R ${spicetify-themes}/${theme} /tmp/spicetify-config/spicetify/Themes/
       ${spicetify-cli}/bin/spicetify-cli backup apply || true
       ${spicetify-cli}/bin/spicetify-cli apply
       mkdir -p $out

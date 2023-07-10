@@ -17,6 +17,13 @@
   in rec {
     packages.x86_64-linux = {
       solarizedDark = pkgs.callPackage ./spicetify.nix {
+        theme = "Ziro";
+        colorscheme = "solarized-dark";
+        inherit spicetify-themes;
+      };
+      nord = pkgs.callPackage ./spicetify.nix {
+        theme = "Sleek";
+        colorscheme = "nord";
         inherit spicetify-themes;
       };
     };
