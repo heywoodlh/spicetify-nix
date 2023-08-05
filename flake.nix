@@ -9,7 +9,11 @@
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { self, nixpkgs, spicetify-themes }: let
+  outputs = {
+    self,
+    nixpkgs,
+    spicetify-themes,
+  }: let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
@@ -17,6 +21,7 @@
     };
     spotify-unwrapped = pkgs.spotify;
   in rec {
+    formatter.x86_64-linux = pkgs.alejandra;
     packages.x86_64-linux = {
       solarizedDark = pkgs.callPackage ./spicetify.nix {
         theme = "Ziro";

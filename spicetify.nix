@@ -1,11 +1,21 @@
-{ stdenv, lib, buildGoModule, fetchFromGitHub, spotify, spicetify-cli, spicetify-themes, theme, colorscheme }:
+{
+  stdenv,
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  spotify,
+  spicetify-cli,
+  spicetify-themes,
+  theme,
+  colorscheme,
+}:
 stdenv.mkDerivation {
   pname = "spotify";
   inherit (spotify) version;
   src = spotify;
   doUnpackPhase = false;
 
-  phases = [ "unpackPhase" "buildPhase" ];
+  phases = ["unpackPhase" "buildPhase"];
 
   buildPhase = ''
     mkdir /tmp/spicetify-config
