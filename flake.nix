@@ -3,7 +3,7 @@
 
   inputs = {
     spicetify-themes = {
-      url = "github:alindl/spicetify-themes";
+      url = "github:spicetify/spicetify-themes/master";
       flake = false;
     };
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
@@ -27,14 +27,29 @@
     in {
       formatter = pkgs.alejandra;
       packages = rec {
-        solarizedDark = pkgs.callPackage ./spicetify.nix {
-          theme = "Ziro";
-          colorscheme = "solarized-dark";
+        dracula = pkgs.callPackage ./spicetify.nix {
+          theme = "Sleek";
+          colorscheme = "dracula";
+          inherit spicetify-themes;
+        };
+        dracula-text = pkgs.callPackage ./spicetify.nix {
+          theme = "text";
+          colorscheme = "dracula";
           inherit spicetify-themes;
         };
         nord = pkgs.callPackage ./spicetify.nix {
           theme = "Sleek";
           colorscheme = "nord";
+          inherit spicetify-themes;
+        };
+        nord-text = pkgs.callPackage ./spicetify.nix {
+          theme = "text";
+          colorscheme = "nord";
+          inherit spicetify-themes;
+        };
+        solarized-text = pkgs.callPackage ./spicetify.nix {
+          theme = "text";
+          colorscheme = "solarized";
           inherit spicetify-themes;
         };
       };

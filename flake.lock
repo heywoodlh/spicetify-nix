@@ -20,11 +20,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1691218994,
-        "narHash": "sha256-46GJ5vLf9H+Oh7Jii2gJI9GATJHGbx2iQpon5nUSFPI=",
+        "lastModified": 1691403902,
+        "narHash": "sha256-J74y4xWtKPDPyVtF4arzrwuSOGznlFlJ+uB9RwNNnbo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0d2fb29f5071a12d7983319c2c2576be6a130582",
+        "rev": "c91024273f020df2dcb209cc133461ca17848026",
         "type": "github"
       },
       "original": {
@@ -43,15 +43,16 @@
     "spicetify-themes": {
       "flake": false,
       "locked": {
-        "lastModified": 1631272361,
-        "narHash": "sha256-nCKERq40oLhYx+FP29Uxpf8v3GIIGyIhYNQNsT6gHmg=",
-        "owner": "alindl",
+        "lastModified": 1690802836,
+        "narHash": "sha256-aTV3kv8LkC75wUAPBbFesv8GgArZcbHuTQ3NKdrstIU=",
+        "owner": "spicetify",
         "repo": "spicetify-themes",
-        "rev": "0708f73e83d29004d284ef20b8ac66206ec14911",
+        "rev": "e4a15de2e02642c7d5ba2cde6cb610dc3c9fac91",
         "type": "github"
       },
       "original": {
-        "owner": "alindl",
+        "owner": "spicetify",
+        "ref": "master",
         "repo": "spicetify-themes",
         "type": "github"
       }
