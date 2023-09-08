@@ -3,7 +3,11 @@
 
   inputs = {
     spicetify-themes = {
-      url = "github:spicetify/spicetify-themes/master";
+      url = "github:spicetify/spicetify-themes";
+      flake = false;
+    };
+    spicetify-themes-alindl = {
+      url = "github:alindl/spicetify-themes";
       flake = false;
     };
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
@@ -14,6 +18,7 @@
     self,
     nixpkgs,
     spicetify-themes,
+    spicetify-themes-alindl,
     flake-utils,
   }:
     flake-utils.lib.eachDefaultSystem (
@@ -23,34 +28,32 @@
           config.allowUnfree = true;
           config.allowAliases = true;
         };
-        spotify-unwrapped = pkgs.spotify;
       in {
         formatter = pkgs.alejandra;
         packages = rec {
+          solarizedDark = pkgs.callPackage ./spicetify.nix {
+            theme = "${spicetify-themes-alindl}/Ziro";
+            colorscheme = "solarized-dark";
+          };
           dracula = pkgs.callPackage ./spicetify.nix {
-            theme = "Sleek";
+            theme = "${spicetify-themes}/Sleek";
             colorscheme = "dracula";
-            inherit spicetify-themes;
           };
           dracula-text = pkgs.callPackage ./spicetify.nix {
-            theme = "text";
+            theme = "${spicetify-themes}/text";
             colorscheme = "dracula";
-            inherit spicetify-themes;
           };
           nord = pkgs.callPackage ./spicetify.nix {
-            theme = "Sleek";
+            theme = "${spicetify-themes}/Sleek";
             colorscheme = "nord";
-            inherit spicetify-themes;
           };
           nord-text = pkgs.callPackage ./spicetify.nix {
-            theme = "text";
+            theme = "${spicetify-themes}/text";
             colorscheme = "nord";
-            inherit spicetify-themes;
           };
           solarized-text = pkgs.callPackage ./spicetify.nix {
-            theme = "text";
+            theme = "${spicetify-themes}/text";
             colorscheme = "solarized";
-            inherit spicetify-themes;
           };
         };
       }
