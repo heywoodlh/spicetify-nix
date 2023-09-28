@@ -26,7 +26,7 @@
     if stdenv.isDarwin
     then ''
       # Create spotify wrapper for MacOS
-      printf "#!/usr/bin/env bash\n$out/Applications/Spotify.app/Contents/MacOS/Spotify" > $out/bin/spotify
+      printf "#!/usr/bin/env bash\nexport HOME=$out\n$out/Applications/Spotify.app/Contents/MacOS/Spotify" > $out/bin/spotify
       chmod +x $out/bin/spotify
 
       cp -r Applications $out
